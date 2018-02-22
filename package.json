@@ -1,0 +1,46 @@
+{
+  "name": "renesas-cloud-toolbox",
+  "version": "1.0.0",
+  "description": "A sample project for the Renesas Synergy Cloud Toolbox",
+  "main": "index.js",
+  "scripts": {
+    "export-docs": "node utils/markdownDocsToPdf.js",
+    "lint": "eslint *.js aws azure common gcp utils",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "UNLICENSED",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/spindance/renesas.cloud-toolbox"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-plugin-source-map-support": "^1.0.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-stage-3": "^6.24.1",
+    "eslint": "^4.12.1",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-promise": "^3.6.0",
+    "markdown-pdf": "^8.1.0",
+    "serverless-azure-functions": "git@github.com:KosnIre/serverless-azure-functions.git#4eae8460d328abdf8e0ed41c1feb48bfa5f65558",
+    "serverless-google-cloudfunctions": "1.1.1",
+    "serverless-offline": "3.16.0",
+    "serverless-webpack": "^4.2.0",
+    "webpack": "^3.10.0",
+    "webpack-node-externals": "^1.6.0"
+  },
+  "dependencies": {
+    "alexa-sdk": "1.0.22",
+    "axios": "0.17.0",
+    "babel-runtime": "^6.26.0",
+    "botbuilder": "^3.13.1",
+    "botbuilder-aws-lambda": "^1.0.2",
+    "lodash.get": "4.4.2",
+    "source-map-support": "^0.4.18"
+  }
+}

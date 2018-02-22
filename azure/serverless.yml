@@ -1,0 +1,62 @@
+# Welcome to Serverless!
+#
+# This file is the main config file for the azure service.
+#
+# For full config options, check the docs:
+#    docs.serverless.com
+#
+
+service: cloudtoolbox # NOTE: Update with your service name
+
+# Use the serverless-webpack plugin to transpile ES6
+plugins:
+  - serverless-azure-functions
+  - serverless-webpack  # plugin order is important! azure-functions MUST be listed BEFORE webpack
+  - serverless-offline
+
+# Enable auto-packing of external modules
+custom:
+  webpack: ./webpack.azureconfig.js
+  webpackIncludeModules:
+    packagePath: ../package.json
+  serverless-offline:
+      port: 4000
+
+# You can pin your service to only deploy with a specific Serverless version
+# Check out our docs for more details
+# frameworkVersion: "=X.X.X"
+
+provider:
+  name: azure
+  location: West US
+
+# you can add packaging information here
+package:
+  individually: true
+
+functions:
+  hello:
+    handler: hello/index.handler
+    events:
+      - http: true
+        x-azure-settings:
+          route: hello
+          authLevel: anonymous
+          name: req
+      - http: true
+        x-azure-settings:
+          direction: out
+          name: res
+
+  cortana:
+    handler: cortana/index.handler
+    events:
+      - http: true
+        x-azure-settings:
+          route: cortana
+          authLevel: anonymous
+          name: req
+      - http: true
+        x-azure-settings:
+          direction: out
+          name: res

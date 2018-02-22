@@ -1,0 +1,19 @@
+/* This CSS file appears to extend the base remarkable css. I mainly used it to fix the tables. */
+
+body {
+  font-size: 0.625em;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+th, td {
+  padding-right: 15px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+tr:nth-child(even) {
+  background-color: #f9f9f9;
+}

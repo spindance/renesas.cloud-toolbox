@@ -1,0 +1,55 @@
+service: gcp
+
+provider:
+  name: google
+  runtime: nodejs
+  project: renesas-cloud-toolbox
+  # the path to the credentials file needs to be absolute
+  credentials: ~/.gcloud/renesas.json
+
+plugins:
+  - serverless-webpack
+  - serverless-offline
+  - serverless-google-cloudfunctions
+
+
+# Enable auto-packing of external modules
+custom:
+  webpack: ./webpack.gcpconfig.js
+  webpackIncludeModules:
+    packagePath: ../package.json
+  serverless-offline:
+      port: 4000
+# You can pin your service to only deploy with a specific Serverless version
+# Check out our docs for more details
+# frameworkVersion: "=X.X.X"
+
+functions:
+  first:
+    handler: apiai
+    events:
+      - http: apiai
+  second:
+    handler: hello
+    events:
+      - http: hello
+
+  # NOTE: the following uses an "event" event (pubSub event in this case).
+  # Please create the corresponding resources in the Google Cloud
+  # before deploying this service through Serverless
+
+  #second:
+  #  handler: event
+  #  events:
+  #    - event:
+  #        eventType: providers/cloud.pubsub/eventTypes/topic.publish
+  #        resource: projects/*/topics/my-topic
+
+# you can define resources, templates etc. the same way you would in a
+# Google Cloud deployment configuration
+#resources:
+#  resources:
+#    - type: storage.v1.bucket
+#      name: my-serverless-service-bucket
+#  imports:
+#    - path: my_template.jinja
